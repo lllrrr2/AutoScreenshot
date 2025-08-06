@@ -27,7 +27,7 @@ Auto Screenshot
 * Can execute custom command after screenshot was taken
 * Clearing old screenshots
 * Play sound when screenshot taken
-* Works on Winows and Linux
+* Works on Windows and Linux
 * Absolutely free and open source
 
 ## Screenshots
