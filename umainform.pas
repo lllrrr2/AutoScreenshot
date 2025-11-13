@@ -24,10 +24,17 @@ type
 
   TMainForm = class(TForm)
     AutoCheckForUpdatesMenuItem: TMenuItem;
+    Button1: TButton;
     FileMenuItem: TMenuItem;
     ExitMenuItem: TMenuItem;
+    Image1: TImage;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
     LangFlagImageList: TImageList;
     MinimizeInsteadOfCloseCheckBox: TCheckBox;
+    Panel1: TPanel;
+    Panel2: TPanel;
     PlaySoundsCheckBox: TCheckBox;
     CompressionLevelComboBox: TComboBox;
     OldScreenshotCleanerEnabledCheckBox: TCheckBox;
@@ -89,11 +96,15 @@ type
     SeqNumberDigitsCountSpinEdit: TSpinEdit;
     SeqNumberDigitsCountLabel: TLabel;
     UniqueInstance1: TUniqueInstance;
+    procedure Button1Click(Sender: TObject);
     procedure CheckForUpdatesMenuItemClick(Sender: TObject);
     procedure AutoCheckForUpdatesMenuItemClick(Sender: TObject);
     procedure CompressionLevelComboBoxChange(Sender: TObject);
     procedure ExitMenuItemClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+    procedure Label3Click(Sender: TObject);
+    procedure Label3MouseEnter(Sender: TObject);
+    procedure Label3MouseLeave(Sender: TObject);
     procedure MinimizeInsteadOfCloseCheckBoxChange(Sender: TObject);
     procedure OldScreenshotCleanerEnabledCheckBoxChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -651,6 +662,11 @@ begin
   CheckForUpdates(False);
 end;
 
+procedure TMainForm.Button1Click(Sender: TObject);
+begin
+  Panel2.Visible:=False;
+end;
+
 procedure TMainForm.AutoCheckForUpdatesMenuItemClick(Sender: TObject);
 begin
   AutoCheckForUpdates := not AutoCheckForUpdates;
@@ -676,6 +692,22 @@ begin
 
   if CanClose then
     CanClose := ConfirmExit;
+end;
+
+procedure TMainForm.Label3Click(Sender: TObject);
+begin
+  //OpenURL('https://artem78.github.io/AutoScreenshot/pages/pro.html?fromApp');
+  OpenURL('https://artem78.github.io/AutoScreenshot/pages/features.html?fromApp');
+end;
+
+procedure TMainForm.Label3MouseEnter(Sender: TObject);
+begin
+  Label3.Font.Style := Label3.Font.Style + [fsUnderline];
+end;
+
+procedure TMainForm.Label3MouseLeave(Sender: TObject);
+begin
+  Label3.Font.Style := Label3.Font.Style - [fsUnderline];
 end;
 
 procedure TMainForm.MinimizeInsteadOfCloseCheckBoxChange(Sender: TObject);
