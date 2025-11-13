@@ -1172,6 +1172,7 @@ begin
     DonateMenuItem.Caption := Localizer.I18N('Donate');
     ExitMenuItem.Caption := Localizer.I18N('Exit');
     FileMenuItem.Caption := Localizer.I18N('File');
+    AboutProMenuItem.Caption := Localizer.I18N('TryPro') + '...';
 
     // Main form components
     OutputDirLabel.Caption := Localizer.I18N('OutputDirectory') + ':';
@@ -1222,6 +1223,10 @@ begin
 
     PlaySoundsCheckBox.Caption := Localizer.I18N('PlaySounds');
     MinimizeInsteadOfCloseCheckBox.Caption := Localizer.I18N('MinimizeInSteadOfClose');
+    Label1.Caption := Localizer.I18N('ProBannerText1') + ' ';
+    Label2.Caption := ' ' + Localizer.I18N('ProBannerText2') + ' ';
+    Label3.Caption := Localizer.I18N('ProBannerText3');
+    Button1.Caption := Localizer.I18N('Close');
 
     // Tray icon
     RestoreWindowTrayMenuItem.Caption := Localizer.I18N('Restore');
