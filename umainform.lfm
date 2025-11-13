@@ -18,7 +18,7 @@ object MainForm: TMainForm
   LCLVersion = '2.2.4.0'
   object Panel3: TPanel
     Left = 0
-    Height = 549
+    Height = 544
     Top = 0
     Width = 723
     Align = alClient
@@ -27,7 +27,7 @@ object MainForm: TMainForm
     ChildSizing.TopBottomSpacing = 15
     ChildSizing.HorizontalSpacing = 6
     ChildSizing.VerticalSpacing = 6
-    ClientHeight = 549
+    ClientHeight = 544
     ClientWidth = 723
     TabOrder = 2
     object OutputDirLabel: TLabel
@@ -115,7 +115,7 @@ object MainForm: TMainForm
       AnchorSideBottom.Side = asrBottom
       Left = 40
       Height = 25
-      Top = 545
+      Top = 540
       Width = 111
       Anchors = [akLeft, akBottom]
       AutoSize = True
@@ -612,14 +612,11 @@ object MainForm: TMainForm
     end
   end
   object Panel2: TPanel
-    AnchorSideTop.Control = AutoCaptureControlGroup
-    AnchorSideTop.Side = asrBottom
     Left = 0
-    Height = 106
-    Top = 549
+    Height = 111
+    Top = 544
     Width = 723
     Align = alBottom
-    Anchors = [akTop, akLeft, akRight, akBottom]
     AutoSize = True
     BevelOuter = bvNone
     BorderStyle = bsSingle
@@ -627,7 +624,7 @@ object MainForm: TMainForm
     ChildSizing.TopBottomSpacing = 15
     ChildSizing.Layout = cclLeftToRightThenTopToBottom
     ChildSizing.ControlsPerLine = 999
-    ClientHeight = 102
+    ClientHeight = 107
     ClientWidth = 719
     TabOrder = 0
     object Label1: TLabel
@@ -743,7 +740,7 @@ object MainForm: TMainForm
     AnchorSideRight.Side = asrBottom
     Left = 653
     Height = 25
-    Top = 590
+    Top = 587
     Width = 55
     Anchors = [akTop, akRight]
     AutoSize = True
