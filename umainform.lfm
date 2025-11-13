@@ -604,35 +604,37 @@ object MainForm: TMainForm
     AnchorSideTop.Control = AutoCaptureControlGroup
     AnchorSideTop.Side = asrBottom
     Left = 15
-    Height = 91
-    Top = 549
+    Height = 77
+    Top = 563
     Width = 693
     Align = alBottom
     Anchors = [akTop, akLeft, akRight, akBottom]
     AutoSize = True
-    BorderSpacing.Top = 16
+    BorderSpacing.Top = 30
     BevelOuter = bvNone
     BorderWidth = 1
     ChildSizing.Layout = cclLeftToRightThenTopToBottom
     ChildSizing.ControlsPerLine = 999
-    ClientHeight = 91
+    ClientHeight = 77
     ClientWidth = 693
     TabOrder = 18
     object Label1: TLabel
       AnchorSideTop.Side = asrCenter
       Left = 0
-      Height = 25
-      Top = 0
+      Height = 15
+      Top = 2
       Width = 45
+      BorderSpacing.CellAlignVertical = ccaCenter
       Caption = 'Try new '
       ParentColor = False
     end
     object Image1: TImage
       AnchorSideTop.Side = asrCenter
       Left = 45
-      Height = 25
+      Height = 20
       Top = 0
-      Width = 16
+      Width = 41
+      BorderSpacing.CellAlignVertical = ccaCenter
       Picture.Data = {
         1754506F727461626C654E6574776F726B47726170686963D505000089504E47
         0D0A1A0A0000000D494844520000002900000014080600000010841485000000
@@ -686,20 +688,22 @@ object MainForm: TMainForm
     end
     object Label2: TLabel
       AnchorSideTop.Side = asrCenter
-      Left = 61
-      Height = 25
-      Top = 0
+      Left = 86
+      Height = 15
+      Top = 2
       Width = 169
+      BorderSpacing.CellAlignVertical = ccaCenter
       Caption = ' version with extended features! '
       ParentColor = False
     end
     object Label3: TLabel
       AnchorSideTop.Side = asrCenter
       Cursor = crHandPoint
-      Left = 230
-      Height = 25
-      Top = 0
+      Left = 255
+      Height = 15
+      Top = 2
       Width = 66
+      BorderSpacing.CellAlignVertical = ccaCenter
       Caption = 'Read more...'
       Font.CharSet = RUSSIAN_CHARSET
       Font.Color = clBlue
@@ -711,17 +715,30 @@ object MainForm: TMainForm
       OnMouseEnter = Label3MouseEnter
       OnMouseLeave = Label3MouseLeave
     end
-    object Button1: TButton
-      AnchorSideRight.Side = asrBottom
-      Left = 296
-      Height = 25
+    object Label4: TLabel
+      Left = 321
+      Height = 20
       Top = 0
-      Width = 55
-      AutoSize = True
-      Caption = 'Close'
-      OnClick = Button1Click
-      TabOrder = 0
+      Width = 87
+      Caption = '                             '
+      ParentColor = False
     end
+  end
+  object Button1: TButton
+    AnchorSideTop.Control = Panel2
+    AnchorSideTop.Side = asrCenter
+    AnchorSideRight.Control = Panel2
+    AnchorSideRight.Side = asrBottom
+    Left = 653
+    Height = 25
+    Top = 589
+    Width = 55
+    Anchors = [akTop, akRight]
+    AutoSize = True
+    BorderSpacing.CellAlignVertical = ccaCenter
+    Caption = 'Close'
+    OnClick = Button1Click
+    TabOrder = 19
   end
   object Timer: TTimer
     Enabled = False

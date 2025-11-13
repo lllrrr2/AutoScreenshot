@@ -28,6 +28,7 @@ type
     FileMenuItem: TMenuItem;
     ExitMenuItem: TMenuItem;
     Image1: TImage;
+    Label4: TLabel;
     MenuImageList: TImageList;
     Label1: TLabel;
     Label2: TLabel;
@@ -668,6 +669,7 @@ end;
 procedure TMainForm.Button1Click(Sender: TObject);
 begin
   Panel2.Visible:=False;
+  (Sender as TButton).Visible:=False;
 end;
 
 procedure TMainForm.AboutProMenuItemClick(Sender: TObject);
