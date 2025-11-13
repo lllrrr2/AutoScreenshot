@@ -28,10 +28,12 @@ type
     FileMenuItem: TMenuItem;
     ExitMenuItem: TMenuItem;
     Image1: TImage;
+    MenuImageList: TImageList;
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
     LangFlagImageList: TImageList;
+    AboutProMenuItem: TMenuItem;
     MinimizeInsteadOfCloseCheckBox: TCheckBox;
     Panel1: TPanel;
     Panel2: TPanel;
@@ -96,6 +98,7 @@ type
     SeqNumberDigitsCountSpinEdit: TSpinEdit;
     SeqNumberDigitsCountLabel: TLabel;
     UniqueInstance1: TUniqueInstance;
+    procedure AboutProMenuItemClick(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure CheckForUpdatesMenuItemClick(Sender: TObject);
     procedure AutoCheckForUpdatesMenuItemClick(Sender: TObject);
@@ -665,6 +668,11 @@ end;
 procedure TMainForm.Button1Click(Sender: TObject);
 begin
   Panel2.Visible:=False;
+end;
+
+procedure TMainForm.AboutProMenuItemClick(Sender: TObject);
+begin
+  OpenURL('https://artem78.github.io/AutoScreenshot/pages/pro.html?fromApp');
 end;
 
 procedure TMainForm.AutoCheckForUpdatesMenuItemClick(Sender: TObject);
