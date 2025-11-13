@@ -38,6 +38,7 @@ type
     MinimizeInsteadOfCloseCheckBox: TCheckBox;
     Panel1: TPanel;
     Panel2: TPanel;
+    Panel3: TPanel;
     PlaySoundsCheckBox: TCheckBox;
     CompressionLevelComboBox: TComboBox;
     OldScreenshotCleanerEnabledCheckBox: TCheckBox;
@@ -1695,8 +1696,8 @@ begin
   MaxWidth := max(MaxWidth, MonitorLabel.Width);
   MaxWidth := max(MaxWidth, PostCmdLabel.Width);
 
-  OutputDirEdit.Left := MaxWidth + ChildSizing.LeftRightSpacing
-      + ChildSizing.HorizontalSpacing;
+  OutputDirEdit.Left := MaxWidth + OutputDirEdit.Parent.ChildSizing.LeftRightSpacing
+      + OutputDirEdit.Parent.ChildSizing.HorizontalSpacing;
 
   // Sequential number group
   RecalculateLabelWidthsForSeqNumGroup;
