@@ -559,6 +559,10 @@ begin
 
   // Minimize instead of close
   MinimizeInsteadOfClose := Ini.ReadBool(DefaultConfigIniSection, 'MinimizeInsteadOfClose', False);
+
+  // PRO banner visibility
+  Panel2.Visible := Ini.ReadBool(DefaultConfigIniSection, 'ProBannerVisible', True);
+  Button1.Visible := Panel2.Visible;
 end;
 
 procedure TMainForm.FormCreate(Sender: TObject);
@@ -671,6 +675,7 @@ procedure TMainForm.Button1Click(Sender: TObject);
 begin
   Panel2.Visible:=False;
   (Sender as TButton).Visible:=False;
+  ini.WriteBool(DefaultConfigIniSection, 'ProBannerVisible', False);
 end;
 
 procedure TMainForm.AboutProMenuItemClick(Sender: TObject);
