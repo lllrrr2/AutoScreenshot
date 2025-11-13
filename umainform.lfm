@@ -835,6 +835,10 @@ object MainForm: TMainForm
         Caption = 'Donate'
         OnClick = DonateMenuItemClick
       end
+      object HomePageMenuItem: TMenuItem
+        Caption = 'Homepage'
+        OnClick = HomePageMenuItemClick
+      end
       object AboutProMenuItem: TMenuItem
         Caption = 'PRO...'
         ImageIndex = 0

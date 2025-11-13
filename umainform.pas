@@ -35,6 +35,7 @@ type
     Label3: TLabel;
     LangFlagImageList: TImageList;
     AboutProMenuItem: TMenuItem;
+    HomePageMenuItem: TMenuItem;
     MinimizeInsteadOfCloseCheckBox: TCheckBox;
     Panel1: TPanel;
     Panel2: TPanel;
@@ -107,6 +108,7 @@ type
     procedure CompressionLevelComboBoxChange(Sender: TObject);
     procedure ExitMenuItemClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+    procedure HomePageMenuItemClick(Sender: TObject);
     procedure Label3Click(Sender: TObject);
     procedure Label3MouseEnter(Sender: TObject);
     procedure Label3MouseLeave(Sender: TObject);
@@ -710,6 +712,11 @@ begin
     CanClose := ConfirmExit;
 end;
 
+procedure TMainForm.HomePageMenuItemClick(Sender: TObject);
+begin
+  OpenURL('https://artem78.github.io/AutoScreenshot/?fromApp');
+end;
+
 procedure TMainForm.Label3Click(Sender: TObject);
 begin
   //OpenURL('https://artem78.github.io/AutoScreenshot/pages/pro.html?fromApp');
@@ -1181,6 +1188,7 @@ begin
     ExitMenuItem.Caption := Localizer.I18N('Exit');
     FileMenuItem.Caption := Localizer.I18N('File');
     AboutProMenuItem.Caption := Localizer.I18N('TryPro') + '...';
+    HomePageMenuItem.Caption := Localizer.I18N('VisitHomepage') + '...';
 
     // Main form components
     OutputDirLabel.Caption := Localizer.I18N('OutputDirectory') + ':';
