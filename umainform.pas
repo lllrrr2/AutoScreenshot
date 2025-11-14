@@ -426,6 +426,8 @@ var
   Seconds: Integer;
   LogFilePath: String;
   CleanerActive: Boolean;
+  ProBannerVisible: Boolean;
+  DT: TDate;
 begin
   // Logging
   if Ini.ReadBool(DefaultConfigIniSection, 'Logging', False) then
@@ -563,8 +565,18 @@ begin
   MinimizeInsteadOfClose := Ini.ReadBool(DefaultConfigIniSection, 'MinimizeInsteadOfClose', False);
 
   // PRO banner visibility
-  Panel2.Visible := Ini.ReadBool(DefaultConfigIniSection, 'ProBannerVisible', True);
-  Button1.Visible := Panel2.Visible;
+  ProBannerVisible := Ini.ReadBool(DefaultConfigIniSection, 'ProBannerVisible', True);
+  if not ProBannerVisible then
+  begin
+    DT := ini.ReadDate(DefaultConfigIniSection, 'ProBannerClosedDate', MinDateTime);
+    if DaysBetween(DT, Now) >= 10 then
+    begin
+      ProBannerVisible := True;
+      Ini.WriteBool(DefaultConfigIniSection, 'ProBannerVisible', ProBannerVisible);
+    end;
+  end;
+  Panel2.Visible := ProBannerVisible;
+  Button1.Visible := ProBannerVisible;
 end;
 
 procedure TMainForm.FormCreate(Sender: TObject);
@@ -678,6 +690,7 @@ begin
   Panel2.Visible:=False;
   (Sender as TButton).Visible:=False;
   ini.WriteBool(DefaultConfigIniSection, 'ProBannerVisible', False);
+  ini.WriteDate(DefaultConfigIniSection, 'ProBannerClosedDate', Now);
 end;
 
 procedure TMainForm.AboutProMenuItemClick(Sender: TObject);
