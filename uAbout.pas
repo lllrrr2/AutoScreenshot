@@ -51,7 +51,7 @@ uses uLocalization, uUtils, LazVersion, DateUtils, StrUtils;
 {$R *.lfm}
 
 const
-  ProjectURLTitle = 'https://artem78.github.io/AutoScreenshot';
+  ProjectURLTitle = 'https://artem78.github.io/AutoScreenshot/';
   ProjectURL = ProjectURLTitle + '?fromApp';
 
 procedure TAboutForm.FormCreate(Sender: TObject);
