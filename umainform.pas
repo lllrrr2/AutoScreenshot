@@ -732,8 +732,7 @@ end;
 
 procedure TMainForm.Label3Click(Sender: TObject);
 begin
-  //OpenURL('https://artem78.github.io/AutoScreenshot/pages/pro.html?fromApp');
-  OpenURL('https://artem78.github.io/AutoScreenshot/pages/features.html?fromApp');
+  OpenURL('https://artem78.github.io/AutoScreenshot/pages/pro.html?fromApp');
 end;
 
 procedure TMainForm.Label3MouseEnter(Sender: TObject);
