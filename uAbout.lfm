@@ -177,10 +177,11 @@ object AboutForm: TAboutForm
       Width = 62
       Caption = 'http://...'
       Font.Color = clBlue
-      Font.Style = [fsUnderline]
       ParentColor = False
       ParentFont = False
       OnClick = LinkValueLabelClick
+      OnMouseEnter = LinkValueLabelMouseEnter
+      OnMouseLeave = LinkValueLabelMouseLeave
     end
   end
   object ButtonPanel: TButtonPanel

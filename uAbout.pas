@@ -33,6 +33,8 @@ type
     LocalizationAuthorTitleLabel: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure LinkValueLabelClick(Sender: TObject);
+    procedure LinkValueLabelMouseEnter(Sender: TObject);
+    procedure LinkValueLabelMouseLeave(Sender: TObject);
   private
     { Private declarations }
   public
@@ -137,6 +139,16 @@ end;
 procedure TAboutForm.LinkValueLabelClick(Sender: TObject);
 begin
   OpenURL(ProjectURL);
+end;
+
+procedure TAboutForm.LinkValueLabelMouseEnter(Sender: TObject);
+begin
+  (Sender as TLabel).Font.Style := (Sender as TLabel).Font.Style + [fsUnderline];
+end;
+
+procedure TAboutForm.LinkValueLabelMouseLeave(Sender: TObject);
+begin
+  (Sender as TLabel).Font.Style := (Sender as TLabel).Font.Style - [fsUnderline];
 end;
 
 end.
