@@ -92,4 +92,4 @@ Artem78 (email: [megabyte1024@ya.ru](mailto:megabyte1024@ya.ru?subject=AutoScree
 - Sberbank card: 5469 4009 8490 5476
 
 ## Links
-- [AutoScreenshot website](https://artem78.github.io/AutoScreenshot/)
+- [AutoScreenshot new website](https://artem78.github.io/AutoScreenshot/)
