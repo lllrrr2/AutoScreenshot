@@ -371,6 +371,7 @@ var
   Fmt: TImageFormat;
   I: Integer;
 begin
+  MainForm.Caption := MainForm.Caption + ' v' + GetProgramVersionStr;
   {$IFOPT D+}
     MainForm.Caption := MainForm.Caption + '    [DEBUG BUILD]';
   {$ENDIF}
