@@ -12,6 +12,7 @@
 #define CurrentYear    GetDateTimeString('yyyy','','')
 #define X86Dir         "build\x86_files"
 #define X64Dir         "build\x64_files"
+#define ProgramConfigDir /*"{userappdata}\AutoScreenshot"*/ "{localappdata}\AutoScreenshot" ; NOTE:  "AutoScreenshot" must be writen WITHOUT space!
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
@@ -122,6 +123,7 @@ Root: "HKCU"; Subkey: "Software\Microsoft\Windows\CurrentVersion\Run"; ValueName
 
 [UninstallDelete]
 ; Remove all data files (config.ini, journal.dat, log and etc.)
-; NOTE:  "AutoScreenshot" must be writen WITHOUT space!
-Name: {userappdata}\AutoScreenshot\*.*; Type: files
-Name: "{userappdata}\AutoScreenshot"; Type: filesandordirs;
+; TODO: how to delete such files for ALL users?
+; TODO: ask user delete all config files or not?
+Name: "{#ProgramConfigDir}\*.*"; Type: files
+Name: "{#ProgramConfigDir}"; Type: filesandordirs;
