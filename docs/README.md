@@ -1,5 +1,6 @@
 [:fr: FR](README-fr.md "French")&nbsp;&nbsp;
 [:ru: RU](README-ru.md "Russian")
+[:ru: RU](README-it.md "Italian")
 
 -------------------------  
 
@@ -108,4 +109,4 @@ Artem78 (email: [megabyte1024@ya.ru](mailto:megabyte1024@ya.ru?subject=AutoScree
 - ЮMoney (yoomoney): [4100 1195 0619 6001](https://yoomoney.ru/to/4100119506196001)
 
 ## Links
-- [AutoScreenshot website](https://artem78.github.io/AutoScreenshot/)
+- [Auto Screenshot website](https://artem78.github.io/AutoScreenshot/)
