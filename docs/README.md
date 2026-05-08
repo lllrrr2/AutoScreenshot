@@ -52,6 +52,8 @@ Auto Screenshot
 
 ![Hotkeys](images/hotkeys.png "Hotkeys")
 
+![Windows XP still supports](images/main_window_xp.png "Windows XP still supports")
+
 ## Languages
 * English
 * [Russian](README-ru.md)
