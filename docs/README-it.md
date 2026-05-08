@@ -1,6 +1,6 @@
-[:fr: FR](README-fr.md "French")&nbsp;&nbsp;
+[:en: EN](README.md "English")&nbsp;&nbsp;
+[:fr: FR](README-fr.md "French")
 [:ru: RU](README-ru.md "Russian")
-[:it: IT](README-it.md "Italian")
 
 -------------------------  
 
