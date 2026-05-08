@@ -1,5 +1,6 @@
 [:uk: EN](README.md "English")&nbsp;&nbsp;
 [:ru: RU](README-ru.md "Russian")
+[:it: IT](README-it.md "Italian")
 
 ---
 Auto Screenshot
