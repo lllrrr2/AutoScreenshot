@@ -117,4 +117,4 @@ Artem78 (email: [megabyte1024@ya.ru](mailto:megabyte1024@ya.ru?subject=AutoScree
 
 ## Links
 - [Auto Screenshot website](https://artem78.github.io/AutoScreenshot/)
-- [Auto Screenshot - Translations on Transiflex](https://app.transifex.com/--334/autoscreenshot/dashboard/)
+- [Auto Screenshot - Translation files on Transiflex](https://app.transifex.com/--334/autoscreenshot/dashboard/)
