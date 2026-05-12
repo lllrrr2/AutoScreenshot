@@ -33,11 +33,12 @@ Auto Screenshot
 * Assolutamente gratuito e open source
 
 ## Schermate
-<!--
-![Finestra principale programma in Windows 7](images/main_window.png "Main program window in Windows 7")
 
-![Icona barra di sistema](images/tray_icon_animation.gif "Tray icon")
--->
+![Programma in funzione in Windows 10](images/main_window_w10.png "Program running on Windows 10")
+
+![Finestra principale programma in Windows 7](images/main_window_w7.png "Main program window in Windows 7")
+
+![Icona barra sistema](images/tray_icon_animation.gif "Tray icon")
 
 ![Finestra principale app in Linux Mint](images/main_window_in_linux_mint.png "Main window in Linux Mint")
 
@@ -51,6 +52,8 @@ Auto Screenshot
 
 ![Tasti rapidi](images/hotkeys.png "Hotkeys")
 
+![Windows XP ancora supportato](images/main_window_xp.png "Windows XP still supports")
+
 ## Lingue
 * [Inglese](README.md)
 * [Russo](README-ru.md)
@@ -63,10 +66,10 @@ Auto Screenshot
 * [Francese](README-fr.md)
 * Italiano
 
-[(Aiutaci con la traduzione)](https://github.com/artem78/AutoScreenshot/issues/5)
+[(Aiutaci con la traduzione)](#Translation)
 
 ## Sistemi operativi supportati
-* Microsoft Windows XP o versione successiva (32/64-bit)
+* Microsoft Windows XP, 7, 8, 10, 11 (32/64-bit)
 * Linux
 
 ## Download
@@ -92,8 +95,14 @@ Descritto in [/docs/build.md](/docs/build.md)
 ## Come posso aiutare?
 * [Segnalando i problemi riscontrati](https://github.com/artem78/AutoScreenshot/issues/new?assignees=&labels=bug&template=bug_report.md&title=)
 * [Suggerendo nuove idee o funzioni](https://github.com/artem78/AutoScreenshot/issues/new?assignees=&labels=enhancement&template=feature_request.md&title=)
-* [Creando una nuova traduzione](https://github.com/artem78/AutoScreenshot/issues/5)
+* Aiutarci con la traduzione
 * [Facendo una donazione](#donate)
+
+### Traduzione
+
+Puoi modificare qualsiasi traduzione o crearne una nuova. Partecipa alla localizzazione su Transifex.com: [Pagina progetto traduzione su Transiflex](https://app.transifex.com/--334/autoscreenshot/dashboard/)
+
+Inoltre puoi modificare i file lingua direttamente nel repository. Formato del file di localizzazione e dettagli del processo sono descritti qui: [istruzioen localizzazione Auto Screenshot su GitHub](https://github.com/artem78/AutoScreenshot/wiki/UI-localization)
 
 ## Licenza
 Sei libero di usare, modificare o distribuire questo software sotto licenza [GNU GPL v3.0](https://github.com/artem78/AutoScreenshot/blob/master/LICENSE.txt).
@@ -110,4 +119,3 @@ Artem78 (email: [megabyte1024@ya.ru](mailto:megabyte1024@ya.ru?subject=AutoScree
 
 ## Collegamenti
 - [Sito web Auto Screenshot](https://artem78.github.io/AutoScreenshot/)
-- [Auto Screenshot - File traduzioni su Transiflex](https://app.transifex.com/--334/autoscreenshot/dashboard/)
