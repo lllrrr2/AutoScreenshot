@@ -137,47 +137,61 @@
 		</exec>
 	</target>
 	
-	<target name="zip" depends="download_dlls, build, tests" description="Pack all to ZIP archive">
+	<target name="zip" depends="download_dlls_once, build, tests" description="Pack all to ZIP archive">
 		<copy file="${executable}" todir="${build_dir}" preservelastmodified="true"/>
+		
 		<if>
 			<equals arg1="${os_family}" arg2="Windows" />
 			<then>
-				<copy file="libeay32.dll" todir="${build_dir}" preservelastmodified="true"/>
-				<copy file="ssleay32.dll" todir="${build_dir}" preservelastmodified="true"/>
-				<copy file="sqlite3.dll" todir="${build_dir}" preservelastmodified="true"/>
+				<if>
+					<equals arg1="${arch}" arg2="x86"/>
+					<then>
+						<var name="dll_dir" value="${build_x86_dir}" />
+					</then>
+				</if>
+				<if>
+					<equals arg1="${arch}" arg2="x64"/>
+					<then>
+						<var name="dll_dir" value="${build_x64_dir}" />
+					</then>
+				</if>
+				
+				<copy file="${dll_dir}/libeay32.dll" todir="${build_dir}" preservelastmodified="true"/>
+				<copy file="${dll_dir}/ssleay32.dll" todir="${build_dir}" preservelastmodified="true"/>
+				<copy file="${dll_dir}/sqlite3.dll" todir="${build_dir}" preservelastmodified="true"/>
 				
 				<if>
 					<equals arg1="${arch}" arg2="x86" />
 					<then>
-						<copy file="libwebp32.dll" todir="${build_dir}" preservelastmodified="true"/>
+						<copy file="${dll_dir}/libwebp32.dll" todir="${build_dir}" preservelastmodified="true"/>
 					</then>
 				</if>
 				<if>
 					<equals arg1="${arch}" arg2="x64" />
 					<then>
-						<copy file="libwebp64.dll" todir="${build_dir}" preservelastmodified="true"/>
+						<copy file="${dll_dir}/libwebp64.dll" todir="${build_dir}" preservelastmodified="true"/>
 					</then>
 				</if>
 				
-				<copy file="libaom.dll" todir="${build_dir}" preservelastmodified="true"/>
-				<copy file="libavif.dll" todir="${build_dir}" preservelastmodified="true"/>
-				<copy file="libdav1d.dll" todir="${build_dir}" preservelastmodified="true"/>
+				<copy file="${dll_dir}/libaom.dll" todir="${build_dir}" preservelastmodified="true"/>
+				<copy file="${dll_dir}/libavif.dll" todir="${build_dir}" preservelastmodified="true"/>
+				<copy file="${dll_dir}/libdav1d.dll" todir="${build_dir}" preservelastmodified="true"/>
 				
 				<if>
 					<equals arg1="${arch}" arg2="x86" />
 					<then>
-						<copy file="libgcc_s_dw2-1.dll" todir="${build_dir}" preservelastmodified="true"/>
+						<copy file="${dll_dir}/libgcc_s_dw2-1.dll" todir="${build_dir}" preservelastmodified="true"/>
 					</then>
 				</if>
 				<if>
 					<equals arg1="${arch}" arg2="x64" />
 					<then>
-						<copy file="libgcc_s_seh-1.dll" todir="${build_dir}" preservelastmodified="true"/>
+						<copy file="${dll_dir}/libgcc_s_seh-1.dll" todir="${build_dir}" preservelastmodified="true"/>
 					</then>
 				</if>
 				
-				<copy file="libwinpthread-1.dll" todir="${build_dir}" preservelastmodified="true"/>
-				<copy file="rav1e.dll" todir="${build_dir}" preservelastmodified="true"/>
+				<copy file="${dll_dir}/libwinpthread-1.dll" todir="${build_dir}" preservelastmodified="true"/>
+				<copy file="${dll_dir}/rav1e.dll" todir="${build_dir}" preservelastmodified="true"/>
 			</then>
 		</if>
 		<mkdir dir="${build_dir}/lang"/>
@@ -195,32 +209,32 @@
 		<zip basedir="${temp_dir}" destfile="${zip_dir}/AutoScreenshot_${version}_${os_family}_${arch}_portable.zip" level="9"/>
 	</target>
 	
-	<!--<target name="installer" depends="download_dlls, build, tests" description="Make installer file (Windows only)" if="is_windows">-->
-	<target name="installer" description="Make installer file (Windows only)" if="is_windows">
+	<!--<target name="installer" depends="download_dlls_once, build, tests" description="Make installer file (Windows only)" if="is_windows">-->
+	<target name="installer" depends="download_dlls_once" description="Make installer file (Windows only)" if="is_windows">
 		<!--<echoproperties/>-->
 		<!--<if>
 			<os family="windows"/>
 			<then>-->
 		
 				<!-- Prepare files for x86 -->
-				<antcall target="download_dlls">
+<!--				<antcall target="download_dlls">
 					<param name="arch" value="x86"/>
 				</antcall>
 				<copy todir="${build_x86_dir}">
 					<fileset dir="${basedir}" includes="/*.dll"/>
-				</copy>
+				</copy>-->
 				<antcall target="build">
 					<param name="arch" value="x86"/>
 				</antcall>
 				<copy file="${basedir}/AutoScreenshot.exe" todir="${build_x86_dir}" failonerror="true" />
 				
 				<!-- Prepare files for x64 -->
-				<antcall target="download_dlls">
+<!--				<antcall target="download_dlls">
 					<param name="arch" value="x64"/>
 				</antcall>
 				<copy todir="${build_x64_dir}">
 					<fileset dir="${basedir}" includes="/*.dll"/>
-				</copy>
+				</copy>-->
 				<antcall target="build">
 					<param name="arch" value="x64"/>
 				</antcall>
@@ -239,13 +253,68 @@
 		</if>-->
 	</target>
 	
-	<target name="delete_dlls">
+	<!--<target name="delete_dlls">
 		<delete>
 			<fileset dir="${basedir}" includes="/*.dll"/>
 		</delete>
+	</target>-->
+	
+	<target name="download_dlls_once" if="is_windows" description="Download DLLs only if needed (Windows only)">
+		<!-- x86 -->
+		<echo>Check DLLs for x86 ...</echo>
+		<if>
+			<and>
+				<available file="${build_x86_dir}/sqlite3.dll"/>
+				<available file="${build_x86_dir}/ssleay32.dll"/>
+				<available file="${build_x86_dir}/libeay32.dll"/>
+				<available file="${build_x86_dir}/libwebp32.dll"/>
+				<available file="${build_x86_dir}/rav1e.dll"/>
+				<available file="${build_x86_dir}/libwinpthread-1.dll"/>
+				<available file="${build_x86_dir}/libgcc_s_dw2-1.dll"/>
+				<available file="${build_x86_dir}/libdav1d.dll"/>
+				<available file="${build_x86_dir}/libavif.dll"/>
+				<available file="${build_x86_dir}/libaom.dll"/>
+			</and>
+			<then>
+				<echo>Ok!</echo>
+			</then>
+			<else>
+				<echo>Need to download</echo>
+				<antcall target="download_dlls">
+					<param name="arch" value="x86"/>
+				</antcall>
+			</else>
+		</if>
+		
+		<!-- x64 -->
+		<echo>Check DLLs for x64 ...</echo>
+		<if>
+			<and>
+				<available file="${build_x64_dir}/sqlite3.dll"/>
+				<available file="${build_x64_dir}/ssleay32.dll"/>
+				<available file="${build_x64_dir}/libeay32.dll"/>
+				<available file="${build_x64_dir}/libwebp64.dll"/>
+				<available file="${build_x64_dir}/rav1e.dll"/>
+				<available file="${build_x64_dir}/libwinpthread-1.dll"/>
+				<available file="${build_x64_dir}/libgcc_s_seh-1.dll"/>
+				<available file="${build_x64_dir}/libdav1d.dll"/>
+				<available file="${build_x64_dir}/libavif.dll"/>
+				<available file="${build_x64_dir}/libaom.dll"/>
+			</and>
+			<then>
+				<echo>Ok!</echo>
+			</then>
+			<else>
+				<echo>Need to download</echo>
+				<antcall target="download_dlls">
+					<param name="arch" value="x64"/>
+				</antcall>
+			</else>
+		</if>
 	</target>
 	
-	<target name="download_dlls" depends="delete_dlls" description="Download all required dlls to project main directory (Windows only)" if="is_windows">
+	<!--<target name="download_dlls" depends="delete_dlls" description="Download all required dlls to project main directory (Windows only)" if="is_windows">-->
+	<target name="download_dlls" description="Download all required dlls to project main directory (Windows only)" if="is_windows">
 		<if>
 			<not>
 				<isset property="arch"/>
@@ -259,13 +328,27 @@
 			</then>
 		</if>
 		
+		<if>
+			<equals arg1="${arch}" arg2="x86"/>
+			<then>
+				<property name="dest_dir" value="${build_x86_dir}" />
+			</then>
+		</if>
+		<if>
+			<equals arg1="${arch}" arg2="x64"/>
+			<then>
+				<property name="dest_dir" value="${build_x64_dir}" />
+			</then>
+		</if>
+		<echo>dest_dir=${dest_dir}</echo>
+		
 		<tempfile property="temp.zip" suffix=".zip" prefix="autoscreenshot_dlls_" deleteonexit="true" destDir="${java.io.tmpdir}" />
 		<echo>Temp dir: ${temp.zip}</echo>
 		
 		<!-- SQLite -->
 		<get src="https://sqlite.org/2024/sqlite-dll-win-${arch}-3450300.zip" dest="${temp.zip}" verbose="true"/>
 		<!--<get src="https://sqlite.org/2026/sqlite-dll-win-${arch}-3530000.zip" dest="${temp.zip}" verbose="true"/>-->
-		<unzip src="${temp.zip}" dest="${basedir}">
+		<unzip src="${temp.zip}" dest="${dest_dir}">
 			<patternset>
 				<include name="/sqlite3.dll"/>
 			</patternset>
@@ -289,7 +372,7 @@
 			<header name="Authorization" value="token ${github_api_token}" />
 		</get>
 		<!--<get src="https://github.com/IndySockets/OpenSSL-Binaries/raw/refs/heads/master/openssl-1.0.2u-${a}.zip" dest="${temp.zip}" verbose="true"/>-->
-		<unzip src="${temp.zip}" dest="${basedir}">
+		<unzip src="${temp.zip}" dest="${dest_dir}">
 			<patternset>
 				<include name="/ssleay32.dll"/>
 				<include name="/libeay32.dll"/>
@@ -310,7 +393,7 @@
 			</then>
 		</if>
 		
-		<get src="https://api.github.com/repos/bgrabitmap/webp/contents/bgrawebp/libwebp${a}.dll" dest="${basedir}" verbose="true">
+		<get src="https://api.github.com/repos/bgrabitmap/webp/contents/bgrawebp/libwebp${a}.dll" dest="${dest_dir}" verbose="true">
 			<header name="Accept" value="application/vnd.github.v3.raw" />
 			<header name="Authorization" value="token ${github_api_token}" />
 		</get>
@@ -332,7 +415,7 @@
 			<header name="Authorization" value="token ${github_api_token}" />
 		</get>
 		<!--<get src="https://github.com/bgrabitmap/bgrabitmap/files/12566323/libavif_windows_dlls_ver_1_0_1-1.zip" dest="${temp.zip}" verbose="true"/>-->
-		<unzip src="${temp.zip}" dest="${basedir}">
+		<unzip src="${temp.zip}" dest="${dest_dir}">
 			<patternset>
 				<!--<include name="/windows${a}bits/*.dll"/>-->
 				
@@ -347,7 +430,29 @@
 		</unzip>
 	</target>
 	
-	<target name="validate_dll_checksums">
-		<!-- todo -->
+	<!--<target name="validate_dll_checksums">
+		<!-\- todo -\->
+	</target>-->
+	
+	<target name="copy_dlls_to_proj_root" depends="download_dlls_once">
+		<echo>Copy DLLs for arch=${arch}</echo>
+		<if>
+			<equals arg1="${arch}" arg2="x86" />
+			<then>
+				<var name="src_dir" value="${build_x86_dir}"/>
+			</then>
+		</if>
+		<if>
+			<equals arg1="${arch}" arg2="x64" />
+			<then>
+				<var name="src_dir" value="${build_x64_dir}"/>
+			</then>
+		</if>
+		
+		<copy todir="${basedir}" verbose="true">
+			<fileset dir="${src_dir}">
+				<include name="*.dll"/>
+			</fileset>
+		</copy>
 	</target>
 </project>
