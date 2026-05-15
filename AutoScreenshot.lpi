@@ -194,6 +194,15 @@ override_dh_auto_install:
             <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
             <ObjectPath Value="libs\PNGImage"/>
           </SearchPaths>
+          <Conditionals Value="if TargetCPU=&apos;i386&apos; then
+begin
+  Arch := &apos;x86&apos;;
+end;
+
+if TargetCPU=&apos;x86_64&apos; then
+begin
+  Arch := &apos;x64&apos;;
+end;"/>
           <Parsing>
             <SyntaxOptions>
               <IncludeAssertionCode Value="True"/>
@@ -221,6 +230,9 @@ override_dh_auto_install:
           </Linking>
           <Other>
             <CustomOptions Value="-dSIMULATE_OLD_FILES_DELETION"/>
+            <ExecuteAfter>
+              <Command Value="ant.bat -Darch=$(Arch) copy_dlls_to_proj_root -debug"/>
+            </ExecuteAfter>
           </Other>
         </CompilerOptions>
       </Item2>
@@ -237,6 +249,15 @@ override_dh_auto_install:
             <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
             <ObjectPath Value="libs\PNGImage"/>
           </SearchPaths>
+          <Conditionals Value="if TargetCPU=&apos;i386&apos; then
+begin
+  Arch := &apos;x86&apos;;
+end;
+
+if TargetCPU=&apos;x86_64&apos; then
+begin
+  Arch := &apos;x64&apos;;
+end;"/>
           <CodeGeneration>
             <SmartLinkUnit Value="True"/>
             <Optimizations>
@@ -257,6 +278,9 @@ override_dh_auto_install:
           </Linking>
           <Other>
             <CustomOptions Value="-B"/>
+            <ExecuteAfter>
+              <Command Value="ant.bat -Darch=$(Arch) copy_dlls_to_proj_root"/>
+            </ExecuteAfter>
           </Other>
         </CompilerOptions>
       </Item3>
@@ -273,6 +297,15 @@ override_dh_auto_install:
             <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
             <ObjectPath Value="libs\PNGImage"/>
           </SearchPaths>
+          <Conditionals Value="if TargetCPU=&apos;i386&apos; then
+begin
+  Arch := &apos;x86&apos;;
+end;
+
+if TargetCPU=&apos;x86_64&apos; then
+begin
+  Arch := &apos;x64&apos;;
+end;"/>
           <CodeGeneration>
             <SmartLinkUnit Value="True"/>
             <TargetCPU Value="i386"/>
@@ -294,6 +327,9 @@ override_dh_auto_install:
           </Linking>
           <Other>
             <CustomOptions Value="-B"/>
+            <ExecuteAfter>
+              <Command Value="ant.bat -Darch=$(Arch) copy_dlls_to_proj_root"/>
+            </ExecuteAfter>
           </Other>
         </CompilerOptions>
       </Item4>
@@ -310,6 +346,15 @@ override_dh_auto_install:
             <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
             <ObjectPath Value="libs\PNGImage"/>
           </SearchPaths>
+          <Conditionals Value="if TargetCPU=&apos;i386&apos; then
+begin
+  Arch := &apos;x86&apos;;
+end;
+
+if TargetCPU=&apos;x86_64&apos; then
+begin
+  Arch := &apos;x64&apos;;
+end;"/>
           <CodeGeneration>
             <SmartLinkUnit Value="True"/>
             <TargetCPU Value="x86_64"/>
@@ -331,6 +376,9 @@ override_dh_auto_install:
           </Linking>
           <Other>
             <CustomOptions Value="-B"/>
+            <ExecuteAfter>
+              <Command Value="ant.bat -Darch=$(Arch) copy_dlls_to_proj_root"/>
+            </ExecuteAfter>
           </Other>
         </CompilerOptions>
       </Item5>
@@ -488,6 +536,15 @@ override_dh_auto_install:
       <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
       <ObjectPath Value="libs\PNGImage"/>
     </SearchPaths>
+    <Conditionals Value="if TargetCPU=&apos;i386&apos; then
+begin
+  Arch := &apos;x86&apos;;
+end;
+
+if TargetCPU=&apos;x86_64&apos; then
+begin
+  Arch := &apos;x64&apos;;
+end;"/>
     <Linking>
       <Options>
         <Win32>
@@ -495,6 +552,11 @@ override_dh_auto_install:
         </Win32>
       </Options>
     </Linking>
+    <Other>
+      <ExecuteAfter>
+        <Command Value="ant.bat -Darch=$(Arch) copy_dlls_to_proj_root"/>
+      </ExecuteAfter>
+    </Other>
   </CompilerOptions>
   <Debugging>
     <Exceptions Count="5">
