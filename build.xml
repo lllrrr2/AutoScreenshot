@@ -369,7 +369,7 @@
 		</if>
 		<get src="https://api.github.com/repos/IndySockets/OpenSSL-Binaries/contents/Archive/openssl-1.0.2j-${a}.zip" dest="${temp.zip}" verbose="true">
 			<header name="Accept" value="application/vnd.github.v3.raw" />
-			<header name="Authorization" value="token ${github_api_token}" />
+			<!--<header name="Authorization" value="token ${github_api_token}" />-->
 		</get>
 		<!--<get src="https://github.com/IndySockets/OpenSSL-Binaries/raw/refs/heads/master/openssl-1.0.2u-${a}.zip" dest="${temp.zip}" verbose="true"/>-->
 		<unzip src="${temp.zip}" dest="${dest_dir}">
@@ -395,7 +395,7 @@
 		
 		<get src="https://api.github.com/repos/bgrabitmap/webp/contents/bgrawebp/libwebp${a}.dll" dest="${dest_dir}" verbose="true">
 			<header name="Accept" value="application/vnd.github.v3.raw" />
-			<header name="Authorization" value="token ${github_api_token}" />
+			<!--<header name="Authorization" value="token ${github_api_token}" />-->
 		</get>
 		
 		<!-- AVIF -->
@@ -412,7 +412,7 @@
 			</then>
 		</if>
 		<get src="https://github.com/bgrabitmap/bgrabitmap/files/8793166/libavifDlls_0.10.1-1.zip" dest="${temp.zip}" verbose="true">
-			<header name="Authorization" value="token ${github_api_token}" />
+			<!--<header name="Authorization" value="token ${github_api_token}" />-->
 		</get>
 		<!--<get src="https://github.com/bgrabitmap/bgrabitmap/files/12566323/libavif_windows_dlls_ver_1_0_1-1.zip" dest="${temp.zip}" verbose="true"/>-->
 		<unzip src="${temp.zip}" dest="${dest_dir}">
